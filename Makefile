@@ -1,32 +1,37 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makfile                                            :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: merson </var/spool/mail/merson>            +#+  +:+       +#+         #
+#    By: emda-sil <emda-sil@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/17 23:07:49 by merson            #+#    #+#              #
-#    Updated: 2026/05/17 23:15:58 by merson           ###   ########.fr        #
+#    Created: 2026/05/18 13:25:16 by emda-sil          #+#    #+#              #
+#    Updated: 2026/05/18 13:25:26 by emda-sil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall - Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -rf
 
 C_LIB = ar rcs
-SRCS = ft_printf.c
 OBJS = $(SRCS:.c=.o)
+SRCS = ft_printf.c
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CLIB) $(CFLAGS) -c< -o $@
+	$(C_LIB) $(NAME) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
-fclean:
+fclean: clean
 	$(RM) $(NAME)
 re: fclean all
 
