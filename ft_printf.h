@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printf(const char format, ...);
+int	ft_printf(const char *format, ...);
 int	ft_puthex(unsigned int n, char format);
 int	ft_putnbr(int n);
 int	ft_putchar(char c);
