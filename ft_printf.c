@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emda-sil <emda-sil@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/19 19:15:33 by emda-sil          #+#    #+#             */
-/*   Updated: 2026/05/19 19:30:47 by emda-sil         ###   ########.fr       */
+/*   Created: 2026/05/19 11:46:53 by emda-sil          #+#    #+#             */
+/*   Updated: 2026/05/19 12:08:19 by emda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h" 
 
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_printf(const char *format, ...)
+{
+	int		count;
+	int		i;
+	va_list	args;
 
-int	ft_formart(char format, va_list args);
-int	ft_puthex(unsigned int n, char format);
-int	ft_putnbr(int n);
-int	ft_putchar(char c);
-int	ft_putstr(const char *str);
-int	ft_putunsigned(unsigned int n);
-int	ft_putptr(void *ptr);
-int	ft_format(char format, va_list args);
-
-#endif
+	i = 0;
+	count = 0;
+	va_start(args, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			count += ft_format(format[i + 1], args);
+			i++;
+		}
+		else
+			count += ft_putchar(format[i]);
+		i++;
+	}
+	va_end(args);
+	return (count);
+}

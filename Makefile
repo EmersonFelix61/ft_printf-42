@@ -19,7 +19,8 @@ RM = rm -rf
 
 C_LIB = ar rcs
 OBJS = $(SRCS:.c=.o)
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_format.c ft_print_hex.c ft_print_numbers.c ft_print_ptr.c \
+	   ft_print_text.c 
 
 all: $(NAME)
 
