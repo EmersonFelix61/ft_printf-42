@@ -24,7 +24,7 @@ int	ft_putstr(const char *str)
 
 	i = 0;
 	if (!str)
-		str = "(NULL)";
+		str = "(null)";
 	while (str[i])
 	{
 		write(1, &str[i], 1);
